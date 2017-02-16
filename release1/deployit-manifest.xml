@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<udm.DeploymentPackage version="v1.0_29" application="informaticaApp">
+  <application />
+  <orchestrator />
+  <deployables>
+    <powercenter.PowercenterXml name="/wf_multifolder" file="/wf_multifolder/wf_multifolder.XML">
+      <tags />
+      <scanPlaceholders>true</scanPlaceholders>
+      <checksum>9bbde1c20e0653c85b2405360888ecd2e5b918ee</checksum>
+      <sourceRepository>DEV2</sourceRepository>
+      <srcFolderNames>
+        <value>multifolder</value>
+        <value>agent1</value>
+      </srcFolderNames>
+      <tgtFolderNames>
+        <value>multifolder123</value>
+        <value>agent123</value>
+      </tgtFolderNames>
+      <objectName>
+        <value>wf_multifolder.XML</value>
+        <value>wf_Employee_Name</value>
+      </objectName>
+      <objectType>
+        <value>workflow</value>
+        <value>workflow</value>
+      </objectType>
+    </powercenter.PowercenterXml>
+    <powercenter.PowercenterXml name="/wf_Employee_Name_rev1" file="/wf_Employee_Name_rev1/wf_Employee_Name.XML">
+      <tags />
+      <scanPlaceholders>true</scanPlaceholders>
+      <checksum>919a784793029ebe1d8fef0a6d40cdc2a7469494</checksum>
+      <sourceRepository>DEV2</sourceRepository>
+      <srcFolderNames>
+        <value>agent1</value>
+      </srcFolderNames>
+      <tgtFolderNames>
+        <value>agent123</value>
+      </tgtFolderNames>
+      <objectName>
+        <value>wf_Employee_Name</value>
+      </objectName>
+      <objectType>
+        <value>workflow</value>
+      </objectType>
+    </powercenter.PowercenterXml>
+  </deployables>
+  <applicationDependencies />
+  <dependencyResolution>LATEST</dependencyResolution>
+  <undeployDependencies>false</undeployDependencies>
+</udm.DeploymentPackage>
