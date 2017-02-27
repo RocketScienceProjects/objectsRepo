@@ -1,0 +1,16 @@
+
+node('master') {
+
+    try{
+        stage('deploy') {
+    xldDeploy environmentId: 'Environments/$Environment_to_Deploy', packageId: 'Applications/$PackageID', serverCredentials: 'admin'
+        }
+    }
+    catch(err){
+        stage ('Send email') {
+        echo "Caught: ${err}"
+        currentBuild.result = 'FAILURE'
+        }
+    }
+
+}
