@@ -2,10 +2,38 @@
 node('master') {
 
     try{
-        stage('deploy') {
-    xldDeploy environmentId: 'Environments/$Environment_to_Deploy', packageId: 'Applications/$PackageID', serverCredentials: 'admin'
+
+      echo "Deploying to: $Environment_to_Deploy"
+
+      echo "DeployPackage: $Packages_to_deploy"
+    def DeployPackage = "$Packages_to_deploy"
+
+
+      def packageList = []
+      //This will hold the coma separated string from the job parameter
+      //def chain = $Packages_to_deploy
+      def list = DeployPackage.tokenize(',')
+      println list
+
+      for (int i = 0; i < list.size(); i++) {
+        def thing = list.get(i)
+        packageList << "$thing"
+      }
+
+      println "The List generated for deployment"
+      println packageList
+
+
+        stage('Start Deploy') {
+          for (int i = 0; i < packageList.size(); i++) {
+            def packageID = packageList.get(i)
+            println "${packageID}"
+               xldDeploy environmentId: "Environments/$Environment_to_Deploy", packageId: "Applications/$packageID", serverCredentials: 'admin';
+
+          }
         }
     }
+
     catch(err){
         stage ('Send email') {
         echo "Caught: ${err}"
