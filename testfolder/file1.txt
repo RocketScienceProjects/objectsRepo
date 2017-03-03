@@ -4,3 +4,6 @@ This is the new line for file1
 4th line
 5th line
 fixes to tag v6.0
+--------------------------
+
+this is tag v7.0
