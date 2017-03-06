@@ -1,7 +1,7 @@
 //specify the label where the job should run
 node('master') {
     try{
-      stage('Init'){
+      stage('Init')
       echo "Deploying to Environment: $Environment_to_Deploy"
       echo "Package provided to deploy: $Packages_to_deploy"
       def DeployPackage = "$Packages_to_deploy"
@@ -15,7 +15,7 @@ node('master') {
       }
       println "The List generated for deployment"
       println packageList
-    }
+    
     //Loop through each package from the List to deploy
     stage('Start Deploy') {
           for (int i = 0; i < packageList.size(); i++) {
