@@ -15,13 +15,15 @@ node('master') {
       }
       println "The List generated for deployment"
       println packageList
-    
+
     //Loop through each package from the List to deploy
     stage('Start Deploy') {
           for (int i = 0; i < packageList.size(); i++) {
             def packageID = packageList.get(i)
             println "Now deploying the packageID: ${packageID}"
                xldDeploy environmentId: "Environments/$Environment_to_Deploy", packageId: "Applications/$packageID", serverCredentials: 'admin';
+             }
+           }
     //Add a stage to send email notification post deployment
     stage('deploymentNotice'){
 
@@ -33,9 +35,7 @@ node('master') {
   )
 
   }
-    }
-      }
-    }
+}
 //Need work to update the email notification
     catch(err){
         stage ('Send email') {
