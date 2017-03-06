@@ -1,8 +1,7 @@
 //specify the label where the job should run
 node('master') {
-
     try{
-
+      stage('Init'){
       echo "Deploying to Environment: $Environment_to_Deploy"
       echo "Package provided to deploy: $Packages_to_deploy"
       def DeployPackage = "$Packages_to_deploy"
@@ -16,6 +15,7 @@ node('master') {
       }
       println "The List generated for deployment"
       println packageList
+    }
     //Loop through each package from the List to deploy
     stage('Start Deploy') {
           for (int i = 0; i < packageList.size(); i++) {
@@ -23,15 +23,32 @@ node('master') {
             println "Now deploying the packageID: ${packageID}"
                xldDeploy environmentId: "Environments/$Environment_to_Deploy", packageId: "Applications/$packageID", serverCredentials: 'admin';
     //Add a stage to send email notification post deployment
+    stage('deploymentNotice'){
 
-          }
-        }
+      emailext (
+        subject: "SUCCESSFUL: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
+        body: """<p>SUCCESSFUL: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]':</p>
+        <p>Check console output at &QUOT;<a href='${env.BUILD_URL}'>${env.JOB_NAME} [${env.BUILD_NUMBER}]</a>&QUOT;</p>""",
+        recipientProviders: [[$class: 'DevelopersRecipientProvider']]
+  )
+
+  }
+    }
+      }
     }
 //Need work to update the email notification
     catch(err){
         stage ('Send email') {
         echo "Caught: ${err}"
         currentBuild.result = 'FAILURE'
+
+        emailext (
+          subject: "FAILED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
+          body: """<p>FAILED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]':</p>
+          <p>Check console output at &QUOT;<a href='${env.BUILD_URL}'>${env.JOB_NAME} [${env.BUILD_NUMBER}]</a>&QUOT;</p>""",
+          recipientProviders: [[$class: 'DevelopersRecipientProvider']]
+  )
+
         }
     }
 
