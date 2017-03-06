@@ -1,12 +1,14 @@
 //specify the label where the job should run
 node('master') {
     try{
-      stage('Init'){
+
       echo "Deploying to Environment: $Environment_to_Deploy"
       echo "Package provided to deploy: $Packages_to_deploy"
       def DeployPackage = "$Packages_to_deploy"
       def packageList = []
-    //splitting the coma separated string from the parameter
+
+    stage('Init'){
+          //splitting the coma separated string from the parameter
       def list = DeployPackage.tokenize(',')
       println list
       for (int i = 0; i < list.size(); i++) {
