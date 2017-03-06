@@ -17,7 +17,7 @@ node('master') {
       }
       println "The List generated for deployment"
       println packageList
-      return packageList
+    //  return packageList
     }
 
     //Loop through each package from the List to deploy
