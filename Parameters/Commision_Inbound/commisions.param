@@ -1,1 +1,2 @@
 export SrcDirectory=/opt/{{dir}}
+export CIDirectory={{CIDirectory}}
