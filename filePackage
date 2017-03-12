@@ -1,7 +1,7 @@
 node {
 
- def artifact = $GIT_TAG_NAME.$BUILD_NUMBER
- println artifactartifact
+ //def artifact = $GIT_TAG_NAME.$BUILD_NUMBER
+ //println artifactartifact
 
 stage('Checkout') {
    checkout([$class: 'GitSCM', branches: [[name: '*/tags/*']], doGenerateSubmoduleConfigurations: false,
