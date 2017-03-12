@@ -12,7 +12,7 @@ stage('Checkout') {
 }
 
  stage('Package') {
-   xldCreatePackage artifactsPath: 'Parameters', manifestPath: 'files-manifest.xml', darPath: '$JOB_NAME-$GIT_TAG_NAME.$BUILD_NUMBER.dar'
+   xldCreatePackage artifactsPath: 'Parameters', manifestPath: 'Parameters/files-manifest.xml', darPath: '$JOB_NAME-$GIT_TAG_NAME.$BUILD_NUMBER.dar'
  }
  stage('Publish') {
    xldPublishPackage serverCredentials: 'admin', darPath: '$JOB_NAME-$GIT_TAG_NAME.$BUILD_NUMBER.dar'
