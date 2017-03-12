@@ -3,6 +3,8 @@ node {
  //def artifact = $GIT_TAG_NAME.$BUILD_NUMBER
  //println artifactartifact
 
+deleteDir()
+
  env.GIT_TAG_NAME = gitTagName()
  env.GIT_TAG_MESSAGE = gitTagMessage()
 
