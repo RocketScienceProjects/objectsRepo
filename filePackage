@@ -1,4 +1,4 @@
-node {
+node('master') {
 
  env.GIT_TAG_NAME = gitTagName()
  env.GIT_TAG_MESSAGE = gitTagMessage()
