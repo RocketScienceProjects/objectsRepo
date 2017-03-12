@@ -1,0 +1,23 @@
+node {
+
+ def artifact = $GIT_TAG_NAME.$BUILD_NUMBER
+ println artifactartifact
+
+stage('Checkout') {
+   checkout([$class: 'GitSCM', branches: [[name: '*/tags/*']], doGenerateSubmoduleConfigurations: false,
+   extensions: [[$class: 'GitTagMessageExtension'], [$class: 'SparseCheckoutPaths',
+   sparseCheckoutPaths: [[path: 'Parameters']]]],
+   submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'b27f7cb2-efa8-496a-90d8-825b9332bf44',
+   refspec: '+refs/tags/*:refs/remotes/origin/tags/*', url: 'git@github.com:RocketScienceProjects/objectsRepo.git']]])
+}
+
+ stage('Package') {
+   xldCreatePackage artifactsPath: 'Parameters', manifestPath: 'files-manifest.xml', darPath: '$JOB_NAME-$GIT_TAG_NAME.$BUILD_NUMBER.dar'
+ }
+ stage('Publish') {
+   xldPublishPackage serverCredentials: 'admin', darPath: '$JOB_NAME-$GIT_TAG_NAME.$BUILD_NUMBER.dar'
+ }
+ stage('Deploy') {
+   xldDeploy serverCredentials: 'admin', environmentId: 'Environments/informatica_test', packageId: 'Applications/FileDeploy/$GIT_TAG_NAME.$BUILD_NUMBER'
+ }
+}
