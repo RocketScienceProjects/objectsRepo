@@ -11,10 +11,10 @@ env.GIT_TAG_NAME = gitTagName()
 env.GIT_TAG_MESSAGE = gitTagMessage()
 
  stage('Package') {
-   xldCreatePackage artifactsPath: 'release1', manifestPath: 'deployit-manifest.xml', darPath: './$JOB_NAME-$GIT_TAG_NAME.$BUILD_NUMBER.dar'
+   xldCreatePackage artifactsPath: 'release1', manifestPath: 'release1/deployit-manifest.xml', darPath: '$JOB_NAME.$BUILD_NUMBER.dar'
  }
  stage('Publish') {
-   xldPublishPackage serverCredentials: 'admin', darPath: './$JOB_NAME-$GIT_TAG_NAME.$BUILD_NUMBER.dar'
+   xldPublishPackage serverCredentials: 'admin', darPath: '$JOB_NAME.$BUILD_NUMBER.dar'
  }
 
  /* stage('Deploy') {
