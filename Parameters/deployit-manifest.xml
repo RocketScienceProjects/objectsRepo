@@ -1,65 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <udm.DeploymentPackage version="$BUILD_NUMBER" application="informaticaApp">
   <deployables>
-    <powercenter.PowercenterXml name="/wf_persons_name" file="wf_persons_name.XML">
-      <scanPlaceholders>true</scanPlaceholders>
-      <sourceRepository>DEV2</sourceRepository>
-      <folderNameMap>
-        <entry key="okram1">{{okram1}}</entry>
-      </folderNameMap>
-      <objectNames>
-        <value>wf_persons_name.XML</value>
-      </objectNames>
-      <objectTypes>
-        <value>workflow</value>
-      </objectTypes>
-    </powercenter.PowercenterXml>
-    <powercenter.PowercenterXml name="/wf_Employee_Name" file="wf_Employee_Name.XML">
-      <scanPlaceholders>true</scanPlaceholders>
-      <sourceRepository>DEV2</sourceRepository>
-      <folderNameMap>
-        <entry key="agent1">{{agentx}}</entry>
-      </folderNameMap>
-      <objectNames>
-        <value>wf_Employee_Name.XML</value>
-      </objectNames>
-      <objectTypes>
-        <value>workflow</value>
-      </objectTypes>
-    </powercenter.PowercenterXml>
-    <powercenter.PowercenterParamFile name="/PI_DTCC.param" file="Parameters/PI_Outbound/PI_DTCC.param">
+   <powercenter.PowercenterParamFile name="/PI_DTCC.param" file="PI_Outbound/PI_DTCC.param">
       <scanPlaceholders>true</scanPlaceholders>
       <functionality>PI_Outbound</functionality>
       <targetFile>PI_DTCC.param</targetFile>
     </powercenter.PowercenterParamFile>
-    <powercenter.PowercenterXml name="/wf_multifolder" file="wf_multifolder.XML">
-      <scanPlaceholders>true</scanPlaceholders>
-      <sourceRepository>DEV2</sourceRepository>
-      <folderNameMap>
-        <entry key="multifolder">{{multifolder}}</entry>
-        <entry key="agent1">{{agentx}}</entry>
-      </folderNameMap>
-      <objectNames>
-        <value>wf_multifolder.XML</value>
-      </objectNames>
-      <objectTypes>
-        <value>workflow</value>
-      </objectTypes>
-    </powercenter.PowercenterXml>
-    <powercenter.PowercenterXml name="/wf_join_name" file="wf_join_name.XML">
-      <scanPlaceholders>true</scanPlaceholders>
-      <sourceRepository>DEV2</sourceRepository>
-      <folderNameMap>
-        <entry key="flname">{{flname}}</entry>
-      </folderNameMap>
-      <objectNames>
-        <value>wf_join_name.XML</value>
-      </objectNames>
-      <objectTypes>
-        <value>workflow</value>
-      </objectTypes>
-    </powercenter.PowercenterXml>
-    <powercenter.PowercenterParamFile name="/commisions.param" file="Parameters/Commision_Inbound/commisions.param">
+    <powercenter.PowercenterParamFile name="/commisions.param" file="Commision_Inbound/commisions.param">
       <scanPlaceholders>true</scanPlaceholders>
       <functionality>Commision_Inbound</functionality>
       <targetFile>commisions.param</targetFile>
