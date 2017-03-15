@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<udm.DeploymentPackage version="$GIT_TAG_NAME.$BUILD_NUMBER" application="informaticaApp">
+  <deployables>
+    <powercenter.PowercenterXml name="/wf_persons_name" file="/wf_persons_name/wf_persons_name.XML">
+      <scanPlaceholders>true</scanPlaceholders>
+      <sourceRepository>DEV2</sourceRepository>
+      <folderNameMap>
+        <entry key="okram1">{{okram1}}</entry>
+      </folderNameMap>
+      <objectNames>
+        <value>wf_persons_name.XML</value>
+      </objectNames>
+      <objectTypes>
+        <value>workflow</value>
+      </objectTypes>
+    </powercenter.PowercenterXml>
+    <powercenter.PowercenterXml name="/wf_Employee_Name" file="/wf_Employee_Name/wf_Employee_Name.XML">
+      <scanPlaceholders>true</scanPlaceholders>
+      <sourceRepository>DEV2</sourceRepository>
+      <folderNameMap>
+        <entry key="agent1">{{agentx}}</entry>
+      </folderNameMap>
+      <objectNames>
+        <value>wf_Employee_Name.XML</value>
+      </objectNames>
+      <objectTypes>
+        <value>workflow</value>
+      </objectTypes>
+    </powercenter.PowercenterXml>
+    <powercenter.PowercenterXml name="/wf_multifolder" file="/wf_multifolder/wf_multifolder.XML">
+      <scanPlaceholders>true</scanPlaceholders>
+      <sourceRepository>DEV2</sourceRepository>
+      <folderNameMap>
+        <entry key="multifolder">{{multifolder}}</entry>
+        <entry key="agent1">{{agentx}}</entry>
+      </folderNameMap>
+      <objectNames>
+        <value>wf_multifolder.XML</value>
+      </objectNames>
+      <objectTypes>
+        <value>workflow</value>
+      </objectTypes>
+    </powercenter.PowercenterXml>
+    <powercenter.PowercenterXml name="/wf_join_name" file="/wf_join_name/wf_join_name.XML">
+      <scanPlaceholders>true</scanPlaceholders>
+      <sourceRepository>DEV2</sourceRepository>
+      <folderNameMap>
+        <entry key="flname">{{flname}}</entry>
+      </folderNameMap>
+      <objectNames>
+        <value>wf_join_name.XML</value>
+      </objectNames>
+      <objectTypes>
+        <value>workflow</value>
+      </objectTypes>
+    </powercenter.PowercenterXml>
+  </deployables>
+  <dependencyResolution>LATEST</dependencyResolution>
+  <undeployDependencies>false</undeployDependencies>
+</udm.DeploymentPackage>
