@@ -1,5 +1,6 @@
 node('master') {
 
+deleteDir()
 
 stage('Checkout') {
   checkout poll: false, scm: [$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false,
