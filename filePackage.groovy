@@ -21,10 +21,11 @@ env.GIT_TAG_MESSAGE = gitTagMessage()
    xldPublishPackage serverCredentials: 'admin', darPath: '$JOB_NAME-Param.$BUILD_NUMBER.dar'
  }
 
- /* stage('Deploy') {
-   xldDeploy serverCredentials: 'admin', environmentId: 'Environments/informatica_test', packageId: 'Applications/FileDeploy/$GIT_TAG_NAME.$BUILD_NUMBER'
+ stage('Deploy') {
+   xldDeploy serverCredentials: 'admin', environmentId: 'Environments/informatica_test', packageId: 'Applications/informaticaApp/$BUILD_NUMBER'
+   xldDeploy serverCredentials: 'admin', environmentId: 'Environments/informatica_test', packageId: 'Applications/informaticaApp/$BUILD_NUMBER.param'
  }
- */
+
 
 }
 
