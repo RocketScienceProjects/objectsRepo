@@ -12,18 +12,18 @@ env.GIT_TAG_NAME = gitTagName()
 env.GIT_TAG_MESSAGE = gitTagMessage()
 
  stage('Package') {
-   xldCreatePackage artifactsPath: 'release1', manifestPath: 'release1/deployit-manifest.xml', darPath: '$JOB_NAME-WF.$BUILD_NUMBER.dar'
-   xldCreatePackage artifactsPath: 'Parameters', manifestPath: 'Parameters/deployit-manifest.xml', darPath: '$JOB_NAME-Param.$BUILD_NUMBER.dar'
+   xldCreatePackage artifactsPath: 'release1', manifestPath: 'release1/deployit-manifest.xml', darPath: '$JOB_NAME.$BUILD_NUMBER.dar'
+   xldCreatePackage artifactsPath: 'Parameters', manifestPath: 'Parameters/deployit-manifest.xml', darPath: '$JOB_NAME.$BUILD_NUMBER.dar'
 
  }
  stage('Publish') {
-   xldPublishPackage serverCredentials: 'admin', darPath: '$JOB_NAME-WF.$BUILD_NUMBER.dar'
-   xldPublishPackage serverCredentials: 'admin', darPath: '$JOB_NAME-Param.$BUILD_NUMBER.dar'
+   xldPublishPackage serverCredentials: 'admin', darPath: '$JOB_NAME.$BUILD_NUMBER.dar'
+   xldPublishPackage serverCredentials: 'admin', darPath: '$JOB_NAME.$BUILD_NUMBER.dar'
  }
 
  stage('Deploy') {
    xldDeploy serverCredentials: 'admin', environmentId: 'Environments/informatica_test', packageId: 'Applications/informaticaApp/$BUILD_NUMBER'
-   xldDeploy serverCredentials: 'admin', environmentId: 'Environments/informatica_test', packageId: 'Applications/informaticaApp/$BUILD_NUMBER.param'
+   xldDeploy serverCredentials: 'admin', environmentId: 'Environments/informatica_test', packageId: 'Applications/informaticaAppParam/$BUILD_NUMBER'
  }
 
 
