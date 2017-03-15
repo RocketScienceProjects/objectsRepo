@@ -1,26 +1,27 @@
 node('master') {
 
- env.GIT_TAG_NAME = gitTagName()
- env.GIT_TAG_MESSAGE = gitTagMessage()
-
 
 stage('Checkout') {
-   checkout([$class: 'GitSCM', branches: [[name: '*/tags/*']], doGenerateSubmoduleConfigurations: false,
-   extensions: [[$class: 'GitTagMessageExtension'], [$class: 'SparseCheckoutPaths',
-   sparseCheckoutPaths: [[path: 'Parameters']]]],
-   submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'b27f7cb2-efa8-496a-90d8-825b9332bf44',
-   refspec: '+refs/tags/*:refs/remotes/origin/tags/*', url: 'git@github.com:RocketScienceProjects/objectsRepo.git']]])
+  checkout poll: false, scm: [$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false,
+  extensions: [[$class: 'SparseCheckoutPaths', sparseCheckoutPaths: [[path: 'release1'], [path: 'Parameters']]]], submoduleCfg: [],
+  userRemoteConfigs: [[credentialsId: 'b27f7cb2-efa8-496a-90d8-825b9332bf44', url: 'git@github.com:RocketScienceProjects/objectsRepo.git']]]
 }
 
+env.GIT_TAG_NAME = gitTagName()
+env.GIT_TAG_MESSAGE = gitTagMessage()
+
  stage('Package') {
-   xldCreatePackage artifactsPath: 'Parameters', manifestPath: 'Parameters/files-manifest.xml', darPath: '$JOB_NAME-$GIT_TAG_NAME.$BUILD_NUMBER.dar'
+   xldCreatePackage artifactsPath: 'release1', manifestPath: 'deployit-manifest.xml', darPath: './$JOB_NAME-$GIT_TAG_NAME.$BUILD_NUMBER.dar'
  }
  stage('Publish') {
-   xldPublishPackage serverCredentials: 'admin', darPath: '$JOB_NAME-$GIT_TAG_NAME.$BUILD_NUMBER.dar'
+   xldPublishPackage serverCredentials: 'admin', darPath: './$JOB_NAME-$GIT_TAG_NAME.$BUILD_NUMBER.dar'
  }
- stage('Deploy') {
+
+ /* stage('Deploy') {
    xldDeploy serverCredentials: 'admin', environmentId: 'Environments/informatica_test', packageId: 'Applications/FileDeploy/$GIT_TAG_NAME.$BUILD_NUMBER'
  }
+ */
+
 }
 
 
