@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<udm.DeploymentPackage version="$GIT_TAG_NAME.$BUILD_NUMBER" application="informaticaApp">
+<udm.DeploymentPackage version="$BUILD_NUMBER" application="informaticaApp">
   <deployables>
-    <powercenter.PowercenterXml name="/wf_persons_name" file="/wf_persons_name/wf_persons_name.XML">
+    <powercenter.PowercenterXml name="/wf_persons_name" file="release1/wf_persons_name.XML">
       <scanPlaceholders>true</scanPlaceholders>
       <sourceRepository>DEV2</sourceRepository>
       <folderNameMap>
@@ -14,7 +14,7 @@
         <value>workflow</value>
       </objectTypes>
     </powercenter.PowercenterXml>
-    <powercenter.PowercenterXml name="/wf_Employee_Name" file="/wf_Employee_Name/wf_Employee_Name.XML">
+    <powercenter.PowercenterXml name="/wf_Employee_Name" file="release1/wf_Employee_Name.XML">
       <scanPlaceholders>true</scanPlaceholders>
       <sourceRepository>DEV2</sourceRepository>
       <folderNameMap>
@@ -27,7 +27,7 @@
         <value>workflow</value>
       </objectTypes>
     </powercenter.PowercenterXml>
-    <powercenter.PowercenterXml name="/wf_multifolder" file="/wf_multifolder/wf_multifolder.XML">
+    <powercenter.PowercenterXml name="/wf_multifolder" file="release1/wf_multifolder.XML">
       <scanPlaceholders>true</scanPlaceholders>
       <sourceRepository>DEV2</sourceRepository>
       <folderNameMap>
@@ -41,7 +41,7 @@
         <value>workflow</value>
       </objectTypes>
     </powercenter.PowercenterXml>
-    <powercenter.PowercenterXml name="/wf_join_name" file="/wf_join_name/wf_join_name.XML">
+    <powercenter.PowercenterXml name="/wf_join_name" file="release1/wf_join_name.XML">
       <scanPlaceholders>true</scanPlaceholders>
       <sourceRepository>DEV2</sourceRepository>
       <folderNameMap>
