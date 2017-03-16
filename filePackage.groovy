@@ -2,6 +2,16 @@ node('master') {
 
 deleteDir()
 
+
+/*
+
+Add STUFF for markup builder
+
+*/
+
+
+
+
 stage('Checkout') {
   checkout poll: false, scm: [$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false,
   extensions: [[$class: 'SparseCheckoutPaths', sparseCheckoutPaths: [[path: 'release1'], [path: 'Parameters']]]], submoduleCfg: [],
