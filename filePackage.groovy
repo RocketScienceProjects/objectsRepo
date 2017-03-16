@@ -3,15 +3,6 @@ node('master') {
 deleteDir()
 
 
-/*
-
-Add STUFF for markup builder
-
-*/
-
-
-
-
 stage('Checkout') {
   checkout poll: false, scm: [$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false,
   extensions: [[$class: 'SparseCheckoutPaths', sparseCheckoutPaths: [[path: 'release1'], [path: 'Parameters']]]], submoduleCfg: [],
@@ -20,6 +11,13 @@ stage('Checkout') {
 
 env.GIT_TAG_NAME = gitTagName()
 env.GIT_TAG_MESSAGE = gitTagMessage()
+
+/*
+
+Add STUFF for markup builder
+
+*/
+
 
  stage('Package') {
    xldCreatePackage artifactsPath: 'release1', manifestPath: 'release1/deployit-manifest.xml', darPath: '$JOB_NAME-WF.$BUILD_NUMBER.dar'
