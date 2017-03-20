@@ -1,5 +1,7 @@
 import groovy.xml.*
 
+ println "generatexml loaded" 
+  
 def GenerateXML(String file) {
   def workflows = [
   [ name: 'A', file: 'fileA', objectName: 'wf_A', objectType: 'workflow', sourceRepository: 'DEV2', folderNames: [ multifolder: '{{multifolderTST}}', multifolder2: '{{multifolderTST2}}' ]],
