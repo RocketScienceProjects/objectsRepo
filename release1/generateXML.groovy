@@ -46,5 +46,5 @@ def GenerateXML(String file) {
       delegate.undeployDependencies(false)
     }
   }
-  return file;
+  return this;
 }
