@@ -1,0 +1,2 @@
+LOAD DATA
+CHARACTERSET {{type}}
