@@ -6,8 +6,8 @@ This will generate the manifest xml
 import groovy.xml.*
 
 def workflows = [
-    [ name: 'A', file: 'fileA', objectName: 'wf_A', objectType: 'workflow', sourceRepository: 'DEV2', folderNames: [ multifolder: '{{multifolderTST}}',
-                     multifolder2: '{{multifolderTST2}}' ]],
+    [ name: 'A', file: 'fileA', objectName: 'wf_A', objectType: 'workflow', sourceRepository: 'DEV2', folderNames: [ multifolder: '{{multifolderTST}}', multifolder2: '{{multifolderTST2}}' ]],
+
     [ name: 'B',
       file: 'fileB',
       objectName: 'wf_B',
