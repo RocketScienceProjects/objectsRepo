@@ -1,19 +1,8 @@
 import groovy.xml.*
 
-def GenerateXML(String file) {
-  def workflows = [
-  [ name: 'A', file: 'fileA', objectName: 'wf_A', objectType: 'workflow', sourceRepository: 'DEV2', folderNames: [ multifolder: '{{multifolderTST}}', multifolder2: '{{multifolderTST2}}' ]],
+def GenerateXML(List workflows) {
 
-  [ name: 'B',
-  file: 'fileB',
-  objectName: 'wf_B',
-  objectType: 'workflow',
-  sourceRepository: 'DEV2',
-  folderNames: [ multifolder3: '{{multifolderTST3}}',
-  multifolder4: '{{multifolderTST4}}' ]]
-  ]
-
-  def writer = new FileWriter(file)
+  def writer = new FileWriter("sampleManifest.XML")
   def builder = new StreamingMarkupBuilder()
   builder.encoding = 'UTF-8'
   writer << builder.bind {
@@ -44,5 +33,19 @@ def GenerateXML(String file) {
       delegate.undeployDependencies(false)
     }
   }
-  return file;
+//  return file;
 }
+
+//Calling the method by passing args//
+
+GenerateXML([
+  [ name: 'A', file: 'fileA', objectName: 'wf_A', objectType: 'workflow', sourceRepository: 'DEV2', folderNames: [ multifolder: '{{multifolderTST}}', multifolder2: '{{multifolderTST2}}' ]],
+
+  [ name: 'B',
+  file: 'fileB',
+  objectName: 'wf_B',
+  objectType: 'workflow',
+  sourceRepository: 'DEV2',
+  folderNames: [ multifolder3: '{{multifolderTST3}}',
+  multifolder4: '{{multifolderTST4}}' ]]
+  ])
