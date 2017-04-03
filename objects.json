@@ -1,7 +1,7 @@
 {"workflows1":
   {
     "name": "/wf_multifolder",
-    "file": "/wf_multifolder/wf_multifolder.XML",
+    "file": "release1/wf_multifolder.XML",
     "objectName": "wf_multifolder.XML",
     "objectType": "workflow",
     "sourceRepository": "DEV2",
