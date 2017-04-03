@@ -1,22 +1,12 @@
 {"workflows1":
   {
-    "name": "A",
-    "file": "fileA",
-    "objectName": "wf_A",
+    "name": "/wf_multifolder",
+    "file": "/wf_multifolder/wf_multifolder.XML",
+    "objectName": "wf_multifolder.XML",
     "objectType": "workflow",
     "sourceRepository": "DEV2",
-    "folderNames": { "multifolder": "{{multifolderTST}}" }
-  },
-  "workflows2":
-  {
-    "name": "B",
-    "file": "fileB",
-    "objectName": "wf_B",
-    "objectType": "workflow",
-    "sourceRepository": "DEV2",
-    "folderNames": { "multifolder": "{{multifolderTST3}}","multifolder2": "{{multifolderTST4}}", "multifolder3": "{{multifolderTST3}}" }
+    "folderNames": { "multifolder": "{{multifolder}}","agent1": "{{agentx}}" }
   }
-
 }
 
 /*
