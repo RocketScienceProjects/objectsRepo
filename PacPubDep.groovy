@@ -90,9 +90,6 @@ def GenerateXML() {
       delegate."udm.DeploymentPackage"(version:'$BUILD_NUMBER', application: "informaticaApp"){
         delegate.deployables {
           parsedData.each { index, obj ->
-            println this.class.name
-            println owner.class.name
-            println delegate.class.name
             it."powercenter.PowercenterXml"(name:obj.name, file:obj.file) {
               delegate.scanPlaceholders(true)
               delegate.sourceRepository(obj.sourceRepository)
