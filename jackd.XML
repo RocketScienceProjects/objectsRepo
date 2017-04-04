@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<udm.DeploymentPackage version='$BUILD_NUMBER' application='informaticaApp' xmlns:udm='http://www.xebialabs.com/deployit/synthetic synthetic.xsd' xmlns:powercenter='http://www.xebialabs.com/deployit/synthetic synthetic.xsd'>
+  <deployables>
+    <powercenter.PowercenterXml name='/wf_multifolder' file='/wf_multifolder/wf_multifolder.XML'>
+      <scanPlaceholders>true</scanPlaceholders>
+      <sourceRepository>DEV2</sourceRepository>
+      <folderNameMap>
+        <entry key='agent1'>{{agentx}}</entry>
+        <entry key='multifolder'>{{multifolder}}</entry>
+      </folderNameMap>
+      <objectNames>
+        <value>wf_multifolder.XML</value>
+      </objectNames>
+      <objectTypes>
+        <value>workflow</value>
+      </objectTypes>
+    </powercenter.PowercenterXml>
+  </deployables>
+  <dependencyResolution>LATEST</dependencyResolution>
+  <undeployDependencies>false</undeployDependencies>
+</udm.DeploymentPackage>
