@@ -2,9 +2,7 @@ import groovy.xml.*
 import groovy.json.JsonSlurper
 
 node('master') {
-
   deleteDir()
-
 
   stage('Checkout') {
     checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [],
@@ -14,16 +12,8 @@ node('master') {
   env.GIT_TAG_NAME = gitTagName()
   env.GIT_TAG_MESSAGE = gitTagMessage()
 
-
-
-  /*
-  This will generate the manifest xml
-  */
-
   GenerateXML()
-
   println "Generated the manifest XML"
-
 
   stage('Package') {
     xldCreatePackage artifactsPath: '.', darPath: 'output1.dar', manifestPath: './sampleManifest123.XML'
@@ -33,15 +23,11 @@ node('master') {
     xldPublishPackage serverCredentials: 'admin', darPath: 'output1.dar'
   }
 
-
-stage('Deploy') {
-xldDeploy serverCredentials: 'admin', environmentId: 'Environments/informatica_test', packageId: 'Applications/informaticaApp/$BUILD_NUMBER'
+  stage('Deploy') {
+    xldDeploy serverCredentials: 'admin', environmentId: 'Environments/informatica_test', packageId: 'Applications/informaticaApp/$BUILD_NUMBER'
   }
 
 }
-
-
-
 
 /** @return The tag name, or `null` if the current commit isn't a tag. */
 String gitTagName() {
@@ -129,6 +115,3 @@ def GenerateXML() {
       }
     }
   }
-
-
-  //GenerateXML()
