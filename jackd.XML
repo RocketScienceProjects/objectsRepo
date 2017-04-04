@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<udm.DeploymentPackage version='$BUILD_NUMBER' application='informaticaApp' xmlns:udm='http://www.xebialabs.com/deployit/synthetic synthetic.xsd' xmlns:powercenter='http://www.xebialabs.com/deployit/synthetic synthetic.xsd'>
+<udm:DeploymentPackage version='$BUILD_NUMBER' application='informaticaApp' xmlns:udm='http://www.xebialabs.com/deployit/synthetic synthetic.xsd' xmlns:powercenter='http://www.xebialabs.com/deployit/synthetic synthetic.xsd'>
   <deployables>
-    <powercenter.PowercenterXml name='/wf_multifolder' file='release1/wf_multifolder.XML'>
+    <powercenter:PowercenterXml name='/wf_multifolder' file='release1/wf_multifolder.XML'>
       <scanPlaceholders>true</scanPlaceholders>
       <sourceRepository>DEV2</sourceRepository>
       <folderNameMap>
@@ -14,8 +14,8 @@
       <objectTypes>
         <value>workflow</value>
       </objectTypes>
-    </powercenter.PowercenterXml>
+    </powercenter:PowercenterXml>
   </deployables>
   <dependencyResolution>LATEST</dependencyResolution>
   <undeployDependencies>false</undeployDependencies>
-</udm.DeploymentPackage>
+</udm:DeploymentPackage>
