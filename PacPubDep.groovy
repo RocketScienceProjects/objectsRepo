@@ -73,8 +73,16 @@ def GenerateXML() {
   def jsonSlurper = new JsonSlurper();
   def fileReader = new BufferedReader(
     new FileReader("${currentws}/objects.json"))  //the file location need to change in the actual implementation
-
     def parsedData = jsonSlurper.parse(fileReader)
+
+    def fileReader2 = new BufferedReader(
+      new FileReader("${currentws}/param.json"))  //the file location need to change in the actual implementation
+      def parsedData2 = jsonSlurper.parse(fileReader2)
+
+    def fileReader3 = new BufferedReader(
+      new FileReader("${currentws}/misc.json"))  //the file location need to change in the actual implementation
+      def parsedData3 = jsonSlurper.parse(fileReader3)
+
 
     /*
     creating the xml
@@ -106,6 +114,24 @@ def GenerateXML() {
               }
             }
           }
+          parsedData2.each { index2, obj2 ->
+            it."powercenter.PowercenterParamFile"(name:obj2.name, file:obj2.file) {
+                delegate.scanPlaceholders(true)
+                delegate.functionality(obj2.functionality)
+                delegate.targetFile(obj2.targetFile)
+                delegate.preserveExistingFiles(true)
+            }
+          }
+         parsedData3.each { index3, obj3 ->
+            it."powercenter.PowercenterMiscFile"(name:obj3.name, file:obj3.file) {
+                 delegate.scanPlaceholders(true)
+                 delegate.textFileNamesRegex(obj3.textFileNamesRegex)
+                 delegate.functionality(obj3.functionality)
+                 delegate.targetFile(obj3.targetFile)
+                 delegate.filePermissions(obj3.filePermissions)
+                 delegate.preserveExistingFiles(true)
+            }
+         }
         }
         delegate.dependencyResolution('LATEST')
         delegate.undeployDependencies(false)
