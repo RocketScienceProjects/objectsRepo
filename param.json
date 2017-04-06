@@ -1,0 +1,8 @@
+{"paramFile1":
+  {
+    "name": "/commisions.param",
+    "file": "Parameters/commisions.param",
+    "functionality": "ParamFiles/Commision_Inbound",
+    "targetFile": "commisions.param"
+  }
+}
