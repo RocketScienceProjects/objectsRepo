@@ -1,7 +1,7 @@
 {"MiscFile1":
   {
     "name": "/scheduler.properties",
-    "file": "/scheduler.properties/scheduler.properties",
+    "file": "Scripts/scheduler.properties",
     "textFileNamesRegex": ".+\\.(sh | ksh | txt | sql | ctl | properties | config | pl | env | dat)",
     "functionality": "Scripts",
     "targetFile": "scheduler.properties",
