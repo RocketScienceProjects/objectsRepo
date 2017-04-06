@@ -9,24 +9,4 @@
   }
 }
 
-/*
-import groovy.json.JsonSlurper
 
-def jsonSlurper = new JsonSlurper();
-def fileReader = new BufferedReader(
-                new FileReader("/home/okram/workspace/objectsRepo/objects.json"))
-
-def parsedData = jsonSlurper.parse(fileReader)
-
-parsedData.each { index, obj ->
- println obj.name
- println obj.file
- println obj.objectName
- println obj.objectType
- println obj.sourceRepository
- obj.folderNames.each { name, value ->
- println "${name}, ${value}"
- }
-}
-
-*/
