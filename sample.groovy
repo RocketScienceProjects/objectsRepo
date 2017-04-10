@@ -22,7 +22,7 @@ node('linux') {
   //parsed json obj
 
 
-  writeFile file: "zing.XML", text: GenerateXML(fR)
+  writeFile file: "zing.XML", text: GenerateXML(fR,fR2)
 
   stage('Package') {
     xldCreatePackage artifactsPath: '.', darPath: 'output1.dar', manifestPath: './sampleManifest123.XML'
@@ -73,9 +73,12 @@ boolean isTag(String desc) {
 }
 
 @NonCPS
-def GenerateXML(Object fileReader) {
+def GenerateXML(Object fileReader, Object fileReader2) {
   def jsonSlurper = new JsonSlurper();
   def parsedData = jsonSlurper.parseText(fileReader)
+  def parsedData2 = jsonSlurper.parseText(fileReader2)
+  //def parsedData3 = jsonSlurper.parseText(fileReader3)
+
   def builder = new StreamingMarkupBuilder()
   builder.encoding = 'UTF-8'
   def xml = builder.bind {
@@ -84,11 +87,6 @@ def GenerateXML(Object fileReader) {
     mkp.declareNamespace('powercenter.PowercenterXml' :'http://www.w3.org/2001/XMLSchema')
     delegate."udm.DeploymentPackage"(version:'$BUILD_NUMBER', application: "informaticaApp"){
       delegate.deployables {
-
-//         println parsedData.workflows[i].name
-//         println parsedData.workflows[i].folderNames[j].key
-// println parsedData.workflows[i].folderNames[j].value
-
         for (int i = 0; i < parsedData.workflows.size(); i++) {
           it."powercenter.PowercenterXml"(name:parsedData.workflows[i].name, file:parsedData.workflows[i].file) {
             delegate.scanPlaceholders(true)
@@ -105,11 +103,20 @@ def GenerateXML(Object fileReader) {
               delegate.value(parsedData.workflows[i].objectType)
             }
           }
+        }
+        for (int a = 0; a < parsedData2.paramFiles.size(); a++) {
+          it."powercenter.PowercenterParamFile"(name:parsedData2.paramFiles[a].name, file:parsedData2.paramFiles[a].file) {
+            delegate.scanPlaceholders(true)
+            delegate.functionality(parsedData2.paramFiles[a].functionality)
+            delegate.targetFile(parsedData2.paramFiles[a].targetFile)
+            delegate.preserveExistingFiles(true)
           }
         }
-        delegate.dependencyResolution('LATEST')
-        delegate.undeployDependencies(false)
       }
+
+    delegate.dependencyResolution('LATEST')
+    delegate.undeployDependencies(false)
     }
-    return xml.toString()
   }
+  return xml.toString()
+}
