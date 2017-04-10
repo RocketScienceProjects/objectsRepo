@@ -1,19 +1,19 @@
-{"workflows1":
-  {
+{
+  "workflows": [{
     "name": "/wf_multifolder",
     "file": "release1/wf_multifolder.XML",
     "objectName": "wf_multifolder.XML",
     "objectType": "workflow",
     "sourceRepository": "DEV2",
-    "folderNames": { "multifolder": "{{multifolder}}","agent1": "{{agentx}}" }
-  },
-  "workflows1":
-    {
-      "name": "/wf_multifolder",
-      "file": "release1/wf_multifolder.XML",
-      "objectName": "wf_multifolder.XML",
-      "objectType": "workflow",
-      "sourceRepository": "DEV2",
-      "folderNames": { "multifolder": "{{multifolder}}","agent1": "{{agentx}}" }
+    "folderNames": [{"key": "multifolder", "value":"{{multifolder}}"}, {"key": "agent1", "value":"{{agentx}}"}]
     }
+  , {
+    "name": "/wf_multifolder2",
+    "file": "release1/wf_multifolder.XML",
+    "objectName": "wf_multifolder.XML",
+    "objectType": "workflow",
+    "sourceRepository": "DEV2",
+    "folderNames": [{"key": "multifolder2", "value":"{{multifolder2}}"}, {"key": "agent2", "value":"{{agentx2}}"}]
+  }
+]
 }
