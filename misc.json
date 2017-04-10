@@ -12,7 +12,7 @@
     "file": "Scripts/test.sh",
     "textFileNamesRegex": ".+\\.(sh | ksh | txt | sql | ctl | properties | config | pl | env | dat)",
     "functionality": "Scripts",
-    "targetFile": "test.sh",
+    "targetFile": "test123.sh",
     "filePermissions": "774"
   }]
 }
