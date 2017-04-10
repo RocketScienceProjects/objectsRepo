@@ -11,10 +11,6 @@ node('linux') {
 
   env.GIT_TAG_NAME = gitTagName()
   env.GIT_TAG_MESSAGE = gitTagMessage()
-
-  // GenerateXML()
-  // println "Generated the manifest XML"
-  //readFile encoding: 'UTF-8', file: 'a.txt'
   def fR = readFile encoding: 'UTF-8', file: 'objects.json'
   def fR2 = readFile encoding: 'UTF-8', file: 'param.json'
   def fR3 = readFile encoding: 'UTF-8', file: 'misc.json'
@@ -22,7 +18,7 @@ node('linux') {
   //parsed json obj
 
 
-  writeFile file: "zing.XML", text: GenerateXML(fR,fR2)
+  writeFile file: "zing.XML", text: GenerateXML(fR,fR2,fR3)
 
   stage('Package') {
     xldCreatePackage artifactsPath: '.', darPath: 'output1.dar', manifestPath: './sampleManifest123.XML'
@@ -73,11 +69,11 @@ boolean isTag(String desc) {
 }
 
 @NonCPS
-def GenerateXML(Object fileReader, Object fileReader2) {
+def GenerateXML(Object fileReader, Object fileReader2, Object fileReader3) {
   def jsonSlurper = new JsonSlurper();
   def parsedData = jsonSlurper.parseText(fileReader)
   def parsedData2 = jsonSlurper.parseText(fileReader2)
-  //def parsedData3 = jsonSlurper.parseText(fileReader3)
+  def parsedData3 = jsonSlurper.parseText(fileReader3)
 
   def builder = new StreamingMarkupBuilder()
   builder.encoding = 'UTF-8'
@@ -112,10 +108,19 @@ def GenerateXML(Object fileReader, Object fileReader2) {
             delegate.preserveExistingFiles(true)
           }
         }
+        for (int b = 0; b < parsedData3.miscFiles.size(); b++) {
+          it."powercenter.PowercenterMiscFile"(name:parsedData3.miscFiles[b].name, file:parsedData3.miscFiles[b].file) {
+            delegate.scanPlaceholders(true)
+            delegate.textFileNamesRegex(parsedData3.miscFiles[b].textFileNamesRegex)
+            delegate.functionality(parsedData3.miscFiles[b].functionality)
+            delegate.targetFile(parsedData3.miscFiles[b].targetFile)
+            delegate.filePermissions(parsedData3.miscFiles[b].filePermissions)
+            delegate.preserveExistingFiles(true)
+          }
+        }
       }
-
-    delegate.dependencyResolution('LATEST')
-    delegate.undeployDependencies(false)
+      delegate.dependencyResolution('LATEST')
+      delegate.undeployDependencies(false)
     }
   }
   return xml.toString()
