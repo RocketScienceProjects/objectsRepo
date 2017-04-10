@@ -1,5 +1,5 @@
 {
-  "ParamFiles": [{
+  "paramFiles": [{
     "name": "sample.param",
     "file": "Scripts/sample.param",
     "functionality": "ParamFiles/Commision_Inbound",
