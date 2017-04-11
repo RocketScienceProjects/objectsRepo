@@ -11,6 +11,10 @@ node('linux') {
 
   env.GIT_TAG_NAME = gitTagName()
   env.GIT_TAG_MESSAGE = gitTagMessage()
+
+  // GenerateXML()
+  // println "Generated the manifest XML"
+  //readFile encoding: 'UTF-8', file: 'a.txt'
   def fR = readFile encoding: 'UTF-8', file: 'objects.json'
   def fR2 = readFile encoding: 'UTF-8', file: 'param.json'
   def fR3 = readFile encoding: 'UTF-8', file: 'misc.json'
@@ -18,10 +22,10 @@ node('linux') {
   //parsed json obj
 
 
-  writeFile file: "zing.XML", text: GenerateXML(fR,fR2,fR3)
+  writeFile file: "a.txt", text: GenerateXML(fR)
 
   stage('Package') {
-    xldCreatePackage artifactsPath: '.', darPath: 'output1.dar', manifestPath: './zing.XML'
+    xldCreatePackage artifactsPath: '.', darPath: 'output1.dar', manifestPath: './sampleManifest123.XML'
   }
 
   stage('Publish') {
@@ -69,12 +73,9 @@ boolean isTag(String desc) {
 }
 
 @NonCPS
-def GenerateXML(Object fileReader, Object fileReader2, Object fileReader3) {
+def GenerateXML(Object fileReader) {
   def jsonSlurper = new JsonSlurper();
   def parsedData = jsonSlurper.parseText(fileReader)
-  def parsedData2 = jsonSlurper.parseText(fileReader2)
-  def parsedData3 = jsonSlurper.parseText(fileReader3)
-
   def builder = new StreamingMarkupBuilder()
   builder.encoding = 'UTF-8'
   def xml = builder.bind {
@@ -83,12 +84,17 @@ def GenerateXML(Object fileReader, Object fileReader2, Object fileReader3) {
     mkp.declareNamespace('powercenter.PowercenterXml' :'http://www.w3.org/2001/XMLSchema')
     delegate."udm.DeploymentPackage"(version:'$BUILD_NUMBER', application: "informaticaApp"){
       delegate.deployables {
+
+//         println parsedData.workflows[i].name
+//         println parsedData.workflows[i].folderNames[j].key
+// println parsedData.workflows[i].folderNames[j].value
+
         for (int i = 0; i < parsedData.workflows.size(); i++) {
           it."powercenter.PowercenterXml"(name:parsedData.workflows[i].name, file:parsedData.workflows[i].file) {
             delegate.scanPlaceholders(true)
             delegate.sourceRepository(parsedData.workflows[i].sourceRepository)
             delegate.folderNameMap {
-              for (int j = 0; j < parsedData.workflows[i].folderNames.size(); j++ ) {
+              for (int j = 0; j < parsedData.workflows[i].size(); j++ ) {
                 it.entry(key:parsedData.workflows[i].folderNames[j].key, parsedData.workflows[i].folderNames[j].value)
               }
             }
@@ -99,29 +105,11 @@ def GenerateXML(Object fileReader, Object fileReader2, Object fileReader3) {
               delegate.value(parsedData.workflows[i].objectType)
             }
           }
-        }
-        for (int a = 0; a < parsedData2.paramFiles.size(); a++) {
-          it."powercenter.PowercenterParamFile"(name:parsedData2.paramFiles[a].name, file:parsedData2.paramFiles[a].file) {
-            delegate.scanPlaceholders(true)
-            delegate.functionality(parsedData2.paramFiles[a].functionality)
-            delegate.targetFile(parsedData2.paramFiles[a].targetFile)
-            delegate.preserveExistingFiles(true)
           }
         }
-        for (int b = 0; b < parsedData3.miscFiles.size(); b++) {
-          it."powercenter.PowercenterMiscFile"(name:parsedData3.miscFiles[b].name, file:parsedData3.miscFiles[b].file) {
-            delegate.scanPlaceholders(true)
-            delegate.textFileNamesRegex(parsedData3.miscFiles[b].textFileNamesRegex)
-            delegate.functionality(parsedData3.miscFiles[b].functionality)
-            delegate.targetFile(parsedData3.miscFiles[b].targetFile)
-            delegate.filePermissions(parsedData3.miscFiles[b].filePermissions)
-            delegate.preserveExistingFiles(true)
-          }
-        }
+        delegate.dependencyResolution('LATEST')
+        delegate.undeployDependencies(false)
       }
-      delegate.dependencyResolution('LATEST')
-      delegate.undeployDependencies(false)
     }
+    return xml.toString()
   }
-  return xml.toString()
-}
