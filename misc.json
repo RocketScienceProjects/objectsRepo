@@ -6,13 +6,5 @@
     "functionality": "Scripts",
     "targetFile": "scheduler.properties",
     "filePermissions": "744"
-  },
-  {
-    "name": "/tesh.sh",
-    "file": "Scripts/test.sh",
-    "textFileNamesRegex": ".+\\.(sh | ksh | txt | sql | ctl | properties | config | pl | env | dat)",
-    "functionality": "Scripts",
-    "targetFile": "test.sh",
-    "filePermissions": "774"
   }]
 }
