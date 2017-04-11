@@ -1,14 +1,3 @@
 {
-  "paramFiles": [{
-    "name": "commisions.param",
-    "file": "Parameters/Commision_Inbound/commisions.param",
-    "functionality": "ParamFiles/Commision_Inbound",
-    "targetFile": "commisions.param"
-  },
-  {
-    "name": "PI_DTCC.param",
-    "file": "Parameters/PI_Outbound/PI_DTCC.param",
-    "functionality": "ParamFiles/PI_Outbound",
-    "targetFile": "PI_DTCC.param"
-  }]
+  "paramFiles": []
 }

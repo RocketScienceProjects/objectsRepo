@@ -1,18 +1,3 @@
 {
-  "miscFiles": [{
-    "name": "/example.sh",
-    "file": "Scripts/example.sh",
-    "textFileNamesRegex": ".+\\.(sh | ksh | txt | sql | ctl | properties | config | pl | env | dat)",
-    "functionality": "Scripts",
-    "targetFile": "example.sh",
-    "filePermissions": "774"
-  },
-  {
-    "name": "/parse.sh",
-    "file": "Scripts/parse.sh",
-    "textFileNamesRegex": ".+\\.(sh | ksh | txt | sql | ctl | properties | config | pl | env | dat)",
-    "functionality": "Scripts",
-    "targetFile": "parse.sh",
-    "filePermissions": "774"
-  }]
+  "miscFiles": []
 }
