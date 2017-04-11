@@ -7,7 +7,7 @@
   },
   {
     "name": "PI_DTCC.param",
-    "file": "Parameters/PI_Outbound/testing.param",
+    "file": "Parameters/PI_Outbound/PI_DTCC.param",
     "functionality": "ParamFiles/PI_Outbound",
     "targetFile": "PI_DTCC.param"
   }]
