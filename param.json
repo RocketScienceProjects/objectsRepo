@@ -1,14 +1,14 @@
 {
   "paramFiles": [{
-    "name": "sample.param",
-    "file": "Scripts/sample.param",
+    "name": "commisions.param",
+    "file": "Parameters/Commision_Inbound/commisions.param",
     "functionality": "ParamFiles/Commision_Inbound",
     "targetFile": "commisions.param"
   },
   {
-    "name": "testing.param",
-    "file": "Scripts/testing.param",
-    "functionality": "ParamFiles/Commision_Inbound2",
-    "targetFile": "testing.param"
+    "name": "PI_DTCC.param",
+    "file": "Parameters/PI_Outbound/testing.param",
+    "functionality": "ParamFiles/PI_Outbound",
+    "targetFile": "PI_DTCC.param"
   }]
 }
