@@ -5,8 +5,13 @@ node('linux') {
   deleteDir()
 
   stage('Checkout') {
-    checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [],
-    userRemoteConfigs: [[credentialsId: 'b27f7cb2-efa8-496a-90d8-825b9332bf44', url: 'git@github.com:RocketScienceProjects/objectsRepo.git']]])
+     /*entry to checkout branch for deployment*/
+    // checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [],
+    // userRemoteConfigs: [[credentialsId: 'b27f7cb2-efa8-496a-90d8-825b9332bf44', url: 'git@github.com:RocketScienceProjects/objectsRepo.git']]])
+    /*entry for checking out latest git-tag */
+    checkout poll: false, scm: [$class: 'GitSCM', branches: [[name: '*/tags/*']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [],
+    userRemoteConfigs: [[credentialsId: 'b27f7cb2-efa8-496a-90d8-825b9332bf44',
+    refspec: '+refs/tags/*:refs/remotes/origin/tags/*', url: 'git@github.com:RocketScienceProjects/objectsRepo.git']]]
   }
 
   env.GIT_TAG_NAME = gitTagName()
@@ -29,7 +34,7 @@ node('linux') {
   }
 
   stage('Deploy') {
-    xldDeploy serverCredentials: 'admin', environmentId: 'Environments/informatica_test', packageId: 'Applications/informaticaApp/$BUILD_NUMBER'
+    xldDeploy serverCredentials: 'admin', environmentId: 'Environments/informatica_test', packageId: 'Applications/informaticaApp/$GIT_TAG_NAME.$BUILD_NUMBER'
   }
 
 }
@@ -81,7 +86,7 @@ def GenerateXML(Object fileReader, Object fileReader2, Object fileReader3) {
     mkp.xmlDeclaration()
     mkp.declareNamespace('udm.DeploymentPackage' :'http://www.w3.org/2001/XMLSchema')
     mkp.declareNamespace('powercenter.PowercenterXml' :'http://www.w3.org/2001/XMLSchema')
-    delegate."udm.DeploymentPackage"(version:'$BUILD_NUMBER', application: "informaticaApp"){
+    delegate."udm.DeploymentPackage"(version:'$GIT_TAG_NAME.$BUILD_NUMBER', application: "informaticaApp"){
       delegate.deployables {
         for (int i = 0; i < parsedData.workflows.size(); i++) {
           it."powercenter.PowercenterXml"(name:parsedData.workflows[i].name, file:parsedData.workflows[i].file) {
