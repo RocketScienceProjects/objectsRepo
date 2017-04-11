@@ -8,12 +8,12 @@
     "folderNames": [{"key": "multifolder", "value":"{{multifolder}}"}, {"key": "agent1", "value":"{{agentx}}"}]
     }
   , {
-    "name": "/wf_multifolder2",
-    "file": "release1/wf_multifolder.XML",
-    "objectName": "wf_multifolder.XML",
+    "name": "/wf_Employee_Name",
+    "file": "release1/wf_Employee_Name.XML",
+    "objectName": "wf_Employee_Name.XML",
     "objectType": "workflow",
     "sourceRepository": "DEV2",
-    "folderNames": [{"key": "multifolder2", "value":"{{multifolder2}}"}, {"key": "agent2", "value":"{{agentx2}}"}]
+    "folderNames": [{"key": "agent1", "value":"{{agentx}}"}]
   }
 ]
 }
