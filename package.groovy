@@ -8,7 +8,7 @@ node("$NODE") {
  // env.GIT_TAG_MESSAGE = gitTagMessage()
 
  stage('package')
-  xldCreatePackage artifactsPath: 'release1/DataIntegration/Workflow', darPath: 'output.dar', manifestPath: 'deploy/zing_working.XML'
+  xldCreatePackage artifactsPath: 'release1/DataIntegration', darPath: 'output.dar', manifestPath: 'deploy/zing_working.XML'
 
 stage('publish')
   xldPublishPackage darPath: 'output.dar', serverCredentials: 'admin'
