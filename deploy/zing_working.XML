@@ -15,6 +15,19 @@
         <value>workflow</value>
       </objectTypes>
     </powercenter.PowercenterXml>
+    <powercenter.PowercenterXml name="/wf_Employee_Name" file="/Workflow/wf_Employee_Name.XML">
+      <scanPlaceholders>true</scanPlaceholders>
+      <sourceRepository>DEV2</sourceRepository>
+      <folderNameMap>
+        <entry key="agent1">{{agentx}}</entry>
+      </folderNameMap>
+      <objectNames>
+        <value>wf_Employee_Name.XML</value>
+      </objectNames>
+      <objectTypes>
+        <value>workflow</value>
+      </objectTypes>
+    </powercenter.PowercenterXml>
     <powercenter.PowercenterParamFile name="sample.param" file="/Scripts/sample.param">
       <scanPlaceholders>true</scanPlaceholders>
       <functionality>ParamFiles/Commision_Inbound</functionality>
