@@ -14,7 +14,7 @@ stage('publish')
   xldPublishPackage darPath: 'output.dar', serverCredentials: 'admin'
 
 stage('deploy')
-  xldDeploy environmentId: 'Environments/informatica_test', packageId: 'Applications/informaticaApp/$GIT_TAG_NAME.$BUILD_NUMBER', serverCredentials: 'admin'
+  xldDeploy environmentId: 'Environments/informatica_test', packageId: 'Applications/informaticaApp/$BUILD_NUMBER', serverCredentials: 'admin'
 
 
 }
