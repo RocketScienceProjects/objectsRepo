@@ -34,6 +34,22 @@
       <targetFile>commisions.param</targetFile>
       <preserveExistingFiles>true</preserveExistingFiles>
     </powercenter.PowercenterParamFile>
+    <powercenter.PowercenterMiscFile name="/scheduler.properties" file="Scripts/scheduler.properties">
+      <scanPlaceholders>true</scanPlaceholders>
+      <textFileNamesRegex>.+\.(sh | ksh | txt | sql | ctl | properties | config | pl | env | dat)</textFileNamesRegex>
+      <functionality>Scripts</functionality>
+      <targetFile>scheduler.properties</targetFile>
+      <filePermissions>744</filePermissions>
+      <preserveExistingFiles>true</preserveExistingFiles>
+    </powercenter.PowercenterMiscFile>
+    <powercenter.PowercenterMiscFile name="/testing.sh" file="Scripts/testing.sh">
+      <scanPlaceholders>true</scanPlaceholders>
+      <textFileNamesRegex>.+\.(sh | ksh | txt | sql | ctl | properties | config | pl | env | dat)</textFileNamesRegex>
+      <functionality>Scripts</functionality>
+      <targetFile>testing.sh</targetFile>
+      <filePermissions>774</filePermissions>
+      <preserveExistingFiles>true</preserveExistingFiles>
+    </powercenter.PowercenterMiscFile>
   </deployables>
   <dependencyResolution>LATEST</dependencyResolution>
   <undeployDependencies>false</undeployDependencies>
