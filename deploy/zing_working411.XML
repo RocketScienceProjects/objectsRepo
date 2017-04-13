@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<udm.DeploymentPackage xmlns:powercenter.PowercenterXml="http://www.w3.org/2001/XMLSchema" xmlns:udm.DeploymentPackage="http://www.w3.org/2001/XMLSchema" version="$GIT_TAG_NAME.$BUILD_NUMBER" application="informaticaApp">
+  <deployables>
+    <powercenter.PowercenterXml name="/wf_multifolder" file="release1/DataIntegration/Workflow/wf_multifolder.XML">
+      <scanPlaceholders>true</scanPlaceholders>
+      <sourceRepository>DEV2</sourceRepository>
+      <folderNameMap>
+        <entry key="multifolder">{{multifolder}}</entry>
+        <entry key="agent1">{{agentx}}</entry>
+      </folderNameMap>
+      <objectNames>
+        <value>wf_multifolder.XML</value>
+      </objectNames>
+      <objectTypes>
+        <value>workflow</value>
+      </objectTypes>
+    </powercenter.PowercenterXml>
+  </deployables>
+  <dependencyResolution>LATEST</dependencyResolution>
+  <undeployDependencies>false</undeployDependencies>
+</udm.DeploymentPackage>
