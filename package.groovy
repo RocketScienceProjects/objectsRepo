@@ -7,8 +7,8 @@ node("$NODE") {
  // env.GIT_TAG_NAME = gitTagName()
  // env.GIT_TAG_MESSAGE = gitTagMessage()
 
- stage('package')
-  xldCreatePackage artifactsPath: 'release1/DataIntegration', darPath: '$JOB_NAME-output.dar', manifestPath: 'deploy/elc-deploy.XML'
+ stage('package')  //testing the v6.1.0
+  xldCreatePackage artifactsPath: 'release1/DataIntegration/Workflow', darPath: '$JOB_NAME-output.dar', manifestPath: 'deploy/elc-deploy.XML'
 
 stage('publish')
   xldPublishPackage darPath: '$JOB_NAME-output.dar', serverCredentials: 'admin'
