@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <udm.DeploymentPackage version="$BUILD_NUMBER" application="informaticaApp">
   <deployables>
-    <powercenter.PowercenterXml name="/wf_multifolder" file="/wf_multifolder.XML">
+    <powercenter.PowercenterXml name="/wf_multifolder" file="/Workflow/wf_multifolder.XML">
       <scanPlaceholders>true</scanPlaceholders>
       <sourceRepository>DEV2</sourceRepository>
       <folderNameMap>
@@ -15,7 +15,7 @@
         <value>workflow</value>
       </objectTypes>
     </powercenter.PowercenterXml>
-  <!--  <powercenter.PowercenterXml name="/wf_Employee_Name" file="/Workflow/wf_Employee_Name.XML">
+    <powercenter.PowercenterXml name="/wf_Employee_Name" file="/Workflow/wf_Employee_Name.XML">
       <scanPlaceholders>true</scanPlaceholders>
       <sourceRepository>DEV2</sourceRepository>
       <folderNameMap>
@@ -49,7 +49,7 @@
       <targetFile>testing.sh</targetFile>
       <filePermissions>774</filePermissions>
       <preserveExistingFiles>true</preserveExistingFiles>
-    </powercenter.PowercenterMiscFile> -->
+    </powercenter.PowercenterMiscFile>
   </deployables>
   <dependencyResolution>LATEST</dependencyResolution>
   <undeployDependencies>false</undeployDependencies>
