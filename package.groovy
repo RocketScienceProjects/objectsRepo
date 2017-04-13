@@ -8,10 +8,10 @@ node("$NODE") {
  // env.GIT_TAG_MESSAGE = gitTagMessage()
 
  stage('package')
-  xldCreatePackage artifactsPath: 'release1/DataIntegration', darPath: 'output.dar', manifestPath: 'deploy/elc-deploy.XML'
+  xldCreatePackage artifactsPath: 'release1/DataIntegration', darPath: '$JOB_NAME-output.dar', manifestPath: 'deploy/elc-deploy.XML'
 
 stage('publish')
-  xldPublishPackage darPath: 'output.dar', serverCredentials: 'admin'
+  xldPublishPackage darPath: '$JOB_NAME-output.dar', serverCredentials: 'admin'
 
 stage('deploy')
   xldDeploy environmentId: 'Environments/informatica_test', packageId: 'Applications/informaticaApp/$BUILD_NUMBER', serverCredentials: 'admin'
