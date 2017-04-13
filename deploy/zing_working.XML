@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <udm.DeploymentPackage version="$BUILD_NUMBER" application="informaticaApp">
   <deployables>
-    <powercenter.PowercenterXml name="/wf_multifolder" file="wf_multifolder.XML">
+    <powercenter.PowercenterXml name="/wf_multifolder" file="/Workflow/wf_multifolder.XML">
       <scanPlaceholders>true</scanPlaceholders>
       <sourceRepository>DEV2</sourceRepository>
       <folderNameMap>
@@ -15,6 +15,12 @@
         <value>workflow</value>
       </objectTypes>
     </powercenter.PowercenterXml>
+    <powercenter.PowercenterParamFile name="sample.param" file="/Scripts/sample.param">
+      <scanPlaceholders>true</scanPlaceholders>
+      <functionality>ParamFiles/Commision_Inbound</functionality>
+      <targetFile>commisions.param</targetFile>
+      <preserveExistingFiles>true</preserveExistingFiles>
+    </powercenter.PowercenterParamFile>
   </deployables>
   <dependencyResolution>LATEST</dependencyResolution>
   <undeployDependencies>false</undeployDependencies>
