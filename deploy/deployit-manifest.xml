@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <udm.DeploymentPackage version="$BUILD_NUMBER" application="informaticaApp">
   <deployables>
-    <powercenter.PowercenterXml name="/wf_multifolder" file="/Workflow/wf_multifolder.XML">
+    <powercenter.PowercenterXml name="/wf_multifolder" file="release1/DataIntegration/Workflow/wf_multifolder.XML">
       <scanPlaceholders>true</scanPlaceholders>
       <sourceRepository>DEV2</sourceRepository>
       <folderNameMap>
