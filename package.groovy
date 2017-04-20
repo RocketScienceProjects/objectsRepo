@@ -27,6 +27,7 @@ stage('deploy')
 /** @return The tag name, or `null` if the current commit isn't a tag. */
 String gitTagName() {
     commit = getCommit()
+    println "printing commit"
     println commit
     if (commit) {
         desc = sh "git describe --tags ${commit}"
