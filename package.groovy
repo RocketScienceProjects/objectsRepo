@@ -32,7 +32,6 @@ String gitTagName() {
         desc = sh "git describe --tags ${commit}"
        return desc
         }
-    }
     return null
 }
 
