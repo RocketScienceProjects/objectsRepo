@@ -39,6 +39,6 @@ String gitTagName() {
 String getCommit() {
     commits = sh 'git rev-parse HEAD > resultFile'
     def out = readFile('resultFile').trim()
-    def commits = $out
+    def commits = out
     return commits
 }
