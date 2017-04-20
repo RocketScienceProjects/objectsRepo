@@ -28,7 +28,7 @@ stage('deploy')
 String gitTagName() {
     commit = getCommit()
     if (commit) {
-        desc = sh 'git describe --tags ${commit}'
+        desc = sh "it describe --tags ${commit}"
         if (isTag(desc)) {
             return desc
         }
