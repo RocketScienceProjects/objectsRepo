@@ -1,9 +1,13 @@
 node("$NODE") {
 
  stage('checkout')
-  checkout poll: false, scm: [$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [],
-  userRemoteConfigs: [[credentialsId: 'b27f7cb2-efa8-496a-90d8-825b9332bf44', url: 'git@github.com:RocketScienceProjects/objectsRepo.git']]]
+  //heckout poll: false, scm: [$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [],
+  //userRemoteConfigs: [[credentialsId: 'b27f7cb2-efa8-496a-90d8-825b9332bf44', url: 'git@github.com:RocketScienceProjects/objectsRepo.git']]]
+  checkout poll: false, scm: [$class: 'GitSCM', branches: [[name: '*/tags/$tag']], doGenerateSubmoduleConfigurations: false, 
+                              extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'b27f7cb2-efa8-496a-90d8-825b9332bf44', refspec: '+refs/tags/*:refs/remotes/origin/tags/*', url: 'git@github.com:RocketScienceProjects/objectsRepo.git']]]
 
+ 
+ 
   env.GIT_TAG_NAME = gitTagName()
   env.GIT_TAG_MESSAGE = gitTagMessage()
 
