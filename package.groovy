@@ -37,6 +37,8 @@ String gitTagName() {
 }
 
 String getCommit() {
-    commits = sh 'git rev-parse HEAD'
+    commits = sh 'git rev-parse HEAD > resultFile'
+    def out = readFile('resultFile').trim()
+    echo "commits = $out"
     return commits
 }
