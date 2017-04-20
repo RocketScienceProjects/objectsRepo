@@ -30,7 +30,9 @@ String gitTagName() {
     println "printing commit"
     println commit
     if (commit) {
-        desc = sh "git describe --tags ${commit}"
+        desc = sh "git describe --tags ${commit} > tagFile"
+        def t = readFile('tagFile').trim()
+        def desc = t
        return desc
         }
     return null
