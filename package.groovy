@@ -27,8 +27,10 @@ stage('deploy')
 /** @return The tag name, or `null` if the current commit isn't a tag. */
 String gitTagName() {
     commit = getCommit()
+    println commit
     if (commit) {
         desc = sh "git describe --tags ${commit}"
+        println desc
         if (isTag(desc)) {
             return desc
         }
@@ -45,6 +47,7 @@ String getCommit() {
 boolean isTag(String desc) {
     match = desc =~ /.+-[0-9]+-g[0-9A-Fa-f]{6,}$/
     result = !match
+    println result
     match = null // prevent serialisation
     return result
 }
