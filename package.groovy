@@ -31,8 +31,11 @@ String gitTagName() {
     if (commit) {
         desc = sh "git describe --tags ${commit}"
         println desc
+        println "printed the desc"
         if (isTag(desc)) {
+            println "returning desc"
             return desc
+            println "returned desc"
         }
     }
     return null
@@ -47,7 +50,9 @@ String getCommit() {
 boolean isTag(String desc) {
     match = desc =~ /.+-[0-9]+-g[0-9A-Fa-f]{6,}$/
     result = !match
+    println "returning result"
     println result
+    println "returned result"
     match = null // prevent serialisation
     return result
 }
