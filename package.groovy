@@ -37,7 +37,8 @@ String gitTagName() {
 }
 
 String getCommit() {
-    return sh 'git rev-parse HEAD'
+    commits = sh 'git rev-parse HEAD'
+    return commits
 }
 
 @NonCPS
