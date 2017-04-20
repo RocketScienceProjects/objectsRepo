@@ -3,11 +3,11 @@ node("$NODE") {
  stage('checkout')
   //heckout poll: false, scm: [$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [],
   //userRemoteConfigs: [[credentialsId: 'b27f7cb2-efa8-496a-90d8-825b9332bf44', url: 'git@github.com:RocketScienceProjects/objectsRepo.git']]]
-  checkout poll: false, scm: [$class: 'GitSCM', branches: [[name: '*/tags/$tag']], doGenerateSubmoduleConfigurations: false, 
+  checkout poll: false, scm: [$class: 'GitSCM', branches: [[name: '*/tags/$tag']], doGenerateSubmoduleConfigurations: false,
                               extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'b27f7cb2-efa8-496a-90d8-825b9332bf44', refspec: '+refs/tags/*:refs/remotes/origin/tags/*', url: 'git@github.com:RocketScienceProjects/objectsRepo.git']]]
 
- 
- 
+
+
   env.GIT_TAG_NAME = gitTagName()
   //env.GIT_TAG_MESSAGE = gitTagMessage()
 
@@ -28,18 +28,18 @@ stage('deploy')
 String gitTagName() {
     commit = getCommit()
     if (commit) {
-        desc = sh(script: "git describe --tags ${commit}", returnStdout: true)?.trim()
+        desc = sh 'git describe --tags ${commit}'
         if (isTag(desc)) {
             return desc
         }
     }
     return null
 }
- 
+
 String getCommit() {
-    return sh(script: 'git rev-parse HEAD', returnStdout: true)?.trim()
+    return sh 'git rev-parse HEAD'
 }
- 
+
 @NonCPS
 boolean isTag(String desc) {
     match = desc =~ /.+-[0-9]+-g[0-9A-Fa-f]{6,}$/
