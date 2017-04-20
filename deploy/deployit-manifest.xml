@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<udm.DeploymentPackage version="$BUILD_NUMBER" application="informaticaApp">
+<udm.DeploymentPackage version="$GIT_TAG_NAME.$BUILD_NUMBER" application="informaticaApp">
   <deployables>
     <powercenter.PowercenterXml name="/wf_multifolder" file="release1/DataIntegration/Workflow/wf_multifolder.XML">
       <scanPlaceholders>true</scanPlaceholders>
