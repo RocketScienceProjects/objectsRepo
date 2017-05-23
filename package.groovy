@@ -9,7 +9,7 @@ node("$NODE") {
  
  
   env.GIT_TAG_NAME = gitTagName()
-  //env.GIT_TAG_MESSAGE = gitTagMessage()
+  env.GIT_TAG_MESSAGE = gitTagMessage()
 
  stage('package')  //testing the v6.1.0
   xldCreatePackage artifactsPath: '.', darPath: '$JOB_NAME-output.dar', manifestPath: 'deploy/deployit-manifest.xml'
