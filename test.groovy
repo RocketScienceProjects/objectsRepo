@@ -1,2 +1,1 @@
-//hello world
-println hello
+Some line
