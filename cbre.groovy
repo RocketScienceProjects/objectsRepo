@@ -1,5 +1,7 @@
 //test script with defined methods of git,,,,]
-//phewww.................
+//phewww........
+//some line for fun
+
 
 
 node('master') {
