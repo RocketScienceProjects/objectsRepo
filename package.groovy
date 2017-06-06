@@ -9,7 +9,7 @@ node("$NODE") {
  
  
   env.GIT_TAG_NAME = gitTagName()
-  //env.GIT_TAG_MESSAGE = gitTagMessage()
+  env.GIT_TAG_MESSAGE = gitTagMessage()
 
  stage('package')  //testing the v6.1.0
   xldCreatePackage artifactsPath: '.', darPath: '$JOB_NAME-output.dar', manifestPath: 'deploy/deployit-manifest.xml'
@@ -23,12 +23,10 @@ stage('deploy')
 
 }
 
-
-/** @return The tag name, or `null` if the current commit isn't a tag. */
 String gitTagName() {
     commit = getCommit()
     if (commit) {
-        desc = sh(script: "git describe --tags ${commit}", returnStdout: true)?.trim()
+        desc = sh(script: "git describe --tags ${commit}", returnStdout: true) //?.trim()
         if (isTag(desc)) {
             return desc
         }
@@ -37,7 +35,7 @@ String gitTagName() {
 }
  
 String getCommit() {
-    return sh(script: 'git rev-parse HEAD', returnStdout: true)?.trim()
+    return sh(script: 'git rev-parse HEAD', returnStdout: true) //?.trim()
 }
  
 @NonCPS
