@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<udm.DeploymentPackage version="$BUILD_NUMBER" application="informaticaAppParam">
+  <deployables>
+   <powercenter.PowercenterParamFile name="/PI_DTCC.param" file="PI_Outbound/PI_DTCC.param">
+      <scanPlaceholders>true</scanPlaceholders>
+      <functionality>PI_Outbound</functionality>
+      <targetFile>PI_DTCC.param</targetFile>
+    </powercenter.PowercenterParamFile>
+    <powercenter.PowercenterParamFile name="/commisions.param" file="Commision_Inbound/commisions.param">
+      <scanPlaceholders>true</scanPlaceholders>
+      <functionality>Commision_Inbound</functionality>
+      <targetFile>commisions.param</targetFile>
+    </powercenter.PowercenterParamFile>
+  </deployables>
+  <dependencyResolution>LATEST</dependencyResolution>
+  <undeployDependencies>false</undeployDependencies>
+</udm.DeploymentPackage>

@@ -1,0 +1,10 @@
+[{
+	"fruits": {
+		"apple": 1,
+		"banana": 2
+	},
+	"drinks": {
+		"water": 3,
+		"coke": 2
+	}
+}]

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<udm.DeploymentPackage version="$GIT_TAG_NAME.$BUILD_NUMBER" application="informaticaApp">
+  <deployables>
+    <powercenter.PowercenterXml name="/wf_multifolder" file="release1/DataIntegration/Workflow/wf_multifolder.XML">
+      <scanPlaceholders>true</scanPlaceholders>
+      <sourceRepository>DEV2</sourceRepository>
+      <folderNameMap>
+        <entry key="multifolder">{{multifolder}}</entry>
+        <entry key="agent1">{{agentx}}</entry>
+      </folderNameMap>
+      <objectNames>
+        <value>wf_multifolder.XML</value>
+      </objectNames>
+      <objectTypes>
+        <value>workflow</value>
+      </objectTypes>
+    </powercenter.PowercenterXml>
+  <powercenter.PowercenterXml name="/wf_Employee_Name" file="release1/DataIntegration/Workflow/wf_Employee_Name.XML">
+      <scanPlaceholders>true</scanPlaceholders>
+      <sourceRepository>DEV2</sourceRepository>
+      <folderNameMap>
+        <entry key="agent1">{{agentx}}</entry>
+      </folderNameMap>
+      <objectNames>
+        <value>wf_Employee_Name.XML</value>
+      </objectNames>
+      <objectTypes>
+        <value>workflow</value>
+      </objectTypes>
+    </powercenter.PowercenterXml>
+    <powercenter.PowercenterParamFile name="sample.param" file="release1/DataIntegration/Scripts/sample.param">
+      <scanPlaceholders>true</scanPlaceholders>
+      <functionality>ParamFiles/Commision_Inbound</functionality>
+      <targetFile>commisions.param</targetFile>
+      <preserveExistingFiles>true</preserveExistingFiles>
+    </powercenter.PowercenterParamFile>
+    <powercenter.PowercenterMiscFile name="/scheduler.properties" file="release1/DataIntegration/Scripts/scheduler.properties">
+      <scanPlaceholders>true</scanPlaceholders>
+      <textFileNamesRegex>.+\.(sh | ksh | txt | sql | ctl | properties | config | pl | env | dat)</textFileNamesRegex>
+      <functionality>Scripts</functionality>
+      <targetFile>scheduler.properties</targetFile>
+      <filePermissions>744</filePermissions>
+      <preserveExistingFiles>true</preserveExistingFiles>
+    </powercenter.PowercenterMiscFile>
+    <powercenter.PowercenterMiscFile name="/testing.sh" file="release1/DataIntegration/Scripts/testing.sh">
+      <scanPlaceholders>true</scanPlaceholders>
+      <textFileNamesRegex>.+\.(sh | ksh | txt | sql | ctl | properties | config | pl | env | dat)</textFileNamesRegex>
+      <functionality>Scripts</functionality>
+      <targetFile>testing.sh</targetFile>
+      <filePermissions>774</filePermissions>
+      <preserveExistingFiles>true</preserveExistingFiles>
+    </powercenter.PowercenterMiscFile>
+  </deployables>
+  <dependencyResolution>LATEST</dependencyResolution>
+  <undeployDependencies>false</undeployDependencies>
+</udm.DeploymentPackage>

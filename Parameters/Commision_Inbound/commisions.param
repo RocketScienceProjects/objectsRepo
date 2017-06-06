@@ -1,0 +1,4 @@
+export SrcDirectory=/opt/{{dir}}
+export CIDirectory={{CIDirectory}}
+export name={{name}}
+export something_env
