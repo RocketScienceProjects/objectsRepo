@@ -1,5 +1,5 @@
 //test script with defined methods of git,,,,]
-//phewww
+//phewww.................
 
 node('master') {
 
