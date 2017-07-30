@@ -1,8 +1,7 @@
 //test script with defined methods of git,,,,]
 //phewww........hello world
 //some line for fun
-//Added some lines 
-//for the revert
+
 
 
 node('master') {
