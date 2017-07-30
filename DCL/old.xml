@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <udm.DeploymentPackage version="$BUILD_NUMBER" application="informaticaApp">
-  <deployables>
+  <deployables arie yong manba, mama su malli kooooo >
     <powercenter.PowercenterXml name="/wf_persons_name" file="wf_persons_name.XML">
       <scanPlaceholders>true</scanPlaceholders>
       <sourceRepository>DEV2</sourceRepository>
